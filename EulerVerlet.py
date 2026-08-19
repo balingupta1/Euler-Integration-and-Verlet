@@ -26,20 +26,20 @@ def compute_acc(pos):
 
 
 
-# before the loop:
-acc, r = compute_acc(pos)   # before the loop
 
-energies = []                # <-- add this
+acc, r = compute_acc(pos)  
+
+energies = []               
 trajectory = []
 
 for step in range(steps):
     vel = vel + acc * (dt/2)
     pos = pos + vel * dt
-    acc, r = compute_acc(pos)   # <-- unpack both values, reuse this r below
+    acc, r = compute_acc(pos) 
     vel = vel + acc * (dt/2)
 
     KE = 0.5 * m * np.dot(vel, vel)
-    PE = -G * M * m / r          # <-- use r from the unpacking, not a new call
+    PE = -G * M * m / r     
     energies.append(KE + PE)
 
     trajectory.append(pos.copy())
